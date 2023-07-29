@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 child: Icon(
                   Icons.lock,
-                  size: 100,
+                  size: 50,
                 ),
               ),
 
