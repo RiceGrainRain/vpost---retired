@@ -15,9 +15,10 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Column(
-            children: const [
+            children: [
+              
               //logo
-              Icon(
+              const Icon(
                 Icons.lock,
                 size: 100,
               ),
@@ -34,7 +35,7 @@ class LoginPage extends StatelessWidget {
               MyTextField(
                 controller: passwordController,
                 hintText: 'Password',
-                obscureText: false,
+                obscureText: true,
               ),
               //forgot password
               //sign in
