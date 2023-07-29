@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projects/components/my_button.dart';
 import 'package:projects/components/my_text_field.dart';
 
 class LoginPage extends StatelessWidget {
@@ -8,6 +9,9 @@ class LoginPage extends StatelessWidget {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
+  //sign user in method
+  void signUserIn() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,11 +20,16 @@ class LoginPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              
               //logo
-              const Icon(
-                Icons.lock,
-                size: 100,
+              const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 25.0,
+                  vertical: 10.0,
+                ),
+                child: Icon(
+                  Icons.lock,
+                  size: 100,
+                ),
               ),
 
               const SizedBox(height: 50),
@@ -31,14 +40,36 @@ class LoginPage extends StatelessWidget {
                 hintText: 'Username',
                 obscureText: false,
               ),
+
               //password
               MyTextField(
                 controller: passwordController,
                 hintText: 'Password',
                 obscureText: true,
               ),
+
               //forgot password
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(
+                          color: Colors.blue[600], fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 25.0),
               //sign in
+              MyButton(
+                onTap: signUserIn,
+              ),
+
+              const SizedBox(height: 50),
               //continue with
               //google + apple
               //not a member?
