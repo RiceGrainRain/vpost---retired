@@ -1,1 +1,1 @@
-VPOST - a centralized volunteering database.
+vpost - a centralized volunteering databse
