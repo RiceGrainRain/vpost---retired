@@ -88,18 +88,13 @@ class _LoginPageState extends State<LoginPage> {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  //padding
-                  const Padding(
-                    padding: EdgeInsets.all(35.0),
-                    child: Divider(
-                      color: Color.fromARGB(0, 0, 0, 0),
-                    ),
-                  ),
+
                   //logo
-
-                  //const MyLogo(),
-
-                  const SizedBox(height: 50),
+                  Image.asset(
+                    'lib/images/logo(2).png',
+                    height: 200,
+                    width: 200,
+                    ),
 
                   //email
                   MyTextField(
@@ -172,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                   //padding
 
                   const Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: EdgeInsets.all(5.0),
                     child: Divider(
                       color: Color.fromARGB(0, 0, 0, 0),
                       //thickness: 2,
@@ -187,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
 
                   const Padding(
-                    padding: EdgeInsets.all(100.0),
+                    padding: EdgeInsets.all(2.0),
                     child: Divider(
                       color: Color.fromARGB(0, 0, 0, 0),
                       //thickness: 2,
