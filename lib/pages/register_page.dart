@@ -59,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(32.0),
           ),
-          backgroundColor: const Color.fromARGB(255, 162, 0, 33),
+          backgroundColor: Color.fromARGB(255, 175, 2, 36),
           title: Center(
             child: Text(
               message,
