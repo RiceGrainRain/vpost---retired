@@ -19,6 +19,8 @@ class MyTextField extends StatelessWidget {
         vertical: 8.0,
       ),
       child: TextField(
+        textAlign: TextAlign.left,
+        textAlignVertical: TextAlignVertical.center,
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
@@ -33,7 +35,10 @@ class MyTextField extends StatelessWidget {
           fillColor: const Color.fromRGBO(238, 238, 238, 1),
           filled: true,
           hintText: hintText,
-          hintStyle: const TextStyle(color: Colors.black),
+          hintStyle: const TextStyle(
+            color: Colors.black,
+            fontSize: 14.0,
+            ),
         ),
       ),
     );
