@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projects/components/my_button.dart';
+import 'package:projects/components/my_logo.dart';
 import 'package:projects/components/my_text_field.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -23,12 +25,11 @@ class LoginPage extends StatelessWidget {
               //padding
               const Padding(
                 padding: EdgeInsets.all(35.0),
-                  child: Divider(
-                ),
+                child: Divider(color: Color.fromARGB(0, 0, 0, 0),),
               ),
               //logo
 
-              Image.asset('lib/images/vpost_logo1.png', scale: 1,),
+              const MyLogo(),
 
               const SizedBox(height: 50),
 
@@ -55,8 +56,7 @@ class LoginPage extends StatelessWidget {
                     Text(
                       'Forgot Password?',
                       style: TextStyle(
-                          color: Colors.blue[600],
-                           fontWeight: FontWeight.bold),
+                          color: Colors.blue[600], fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -69,108 +69,72 @@ class LoginPage extends StatelessWidget {
               ),
 
               const SizedBox(height: 50),
-              
+
               //continue with
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: Row(
                   children: [
                     Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
                     ),
-              
-                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0, ),
                       child: Text(
                         "OR",
-                        style: TextStyle(color:Colors.grey[700]),
+                        style: TextStyle(color: Colors.grey[700]),
                       ),
                     ),
-              
-                      Expanded(
-                              child: Divider(
-                                thickness: 0.5,
-                                color: Colors.grey[400],
-                              ),
-                          ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
                   ],
                 ),
               ),
-              
-              
-              //google
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40.0,
-                  vertical: 40.0,
-                  ),
-                child: Row(
-                  children: [
-                    const Expanded(
-                        child: Divider(
-                          //thickness: 0.5,
-                          color: Color.fromARGB(0, 0, 0, 0),
-                        ),
-                    ),
-
-                    Text(
-                      '',
-                      style: TextStyle(
-                        fontFamily: 'JetBrainsMonoNerd',
-                        color: Colors.blue[600],
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        ),
-                    ),
-              
-                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(
-                        "Continue with Google",
-                        style: TextStyle(
-                          color:Colors.blue[600],
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-
-                       const Expanded(
-                              child: Divider(
-                                //thickness: 0.5,
-                                color: Color.fromARGB(0, 0, 0, 0),
-                              ),
-                          ),
-                  ],
-                ),
-              ),
-
 
 
             //padding
               const Padding(
-                padding: EdgeInsets.all(55.0),
-                  child: Divider(
+                padding: EdgeInsets.all(15.0),
+                child: Divider(color: Color.fromARGB(0, 0, 0, 0),),
+              ),
+
+              //google
+              SignInButton(
+                Buttons.google,
+                onPressed: (){},
+              ),
+
+
+
+              //padding
+              const Padding(
+                padding: EdgeInsets.all(100.0),
+                child: Divider(color: Color.fromARGB(0, 0, 0, 0),
                     //thickness: 2,
-                ),
+                    ),
               ),
               //not a member?
               Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Not a member?"),
-                const SizedBox(width: 4),
-                Text("Register now",
-                  style: TextStyle(
-                    color: Colors.blue[600],
-                    fontWeight: FontWeight.bold,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Not a member?"),
+                  const SizedBox(width: 4),
+                  Text(
+                    "Register now",
+                    style: TextStyle(
+                      color: Colors.blue[600],
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
-            ),
-
+                ],
+              ),
             ],
           ),
         ),
