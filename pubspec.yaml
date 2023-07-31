@@ -52,6 +52,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts:
+    - family: JetBrainsMonoNerd
+      fonts: 
+        - asset: fonts/JetBrainsMonoNerdFont-Regular.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -61,6 +65,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/images/
+    - lib/fonts/
   
   #   - images/a_dot_ham.jpeg
 

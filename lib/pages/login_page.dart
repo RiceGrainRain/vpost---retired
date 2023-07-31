@@ -20,17 +20,15 @@ class LoginPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              //logo
+              //padding
               const Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 25.0,
-                  vertical: 10.0,
-                ),
-                child: Icon(
-                  Icons.lock,
-                  size: 50,
+                padding: EdgeInsets.all(35.0),
+                  child: Divider(
                 ),
               ),
+              //logo
+
+              Image.asset('lib/images/vpost_logo1.png', scale: 1,),
 
               const SizedBox(height: 50),
 
@@ -57,7 +55,8 @@ class LoginPage extends StatelessWidget {
                     Text(
                       'Forgot Password?',
                       style: TextStyle(
-                          color: Colors.blue[600], fontWeight: FontWeight.w500),
+                          color: Colors.blue[600],
+                           fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -70,9 +69,108 @@ class LoginPage extends StatelessWidget {
               ),
 
               const SizedBox(height: 50),
+              
               //continue with
-              //google + apple
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                    ),
+              
+                     Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        "OR",
+                        style: TextStyle(color:Colors.grey[700]),
+                      ),
+                    ),
+              
+                      Expanded(
+                              child: Divider(
+                                thickness: 0.5,
+                                color: Colors.grey[400],
+                              ),
+                          ),
+                  ],
+                ),
+              ),
+              
+              
+              //google
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 40.0,
+                  vertical: 40.0,
+                  ),
+                child: Row(
+                  children: [
+                    const Expanded(
+                        child: Divider(
+                          //thickness: 0.5,
+                          color: Color.fromARGB(0, 0, 0, 0),
+                        ),
+                    ),
+
+                    Text(
+                      '',
+                      style: TextStyle(
+                        fontFamily: 'JetBrainsMonoNerd',
+                        color: Colors.blue[600],
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        ),
+                    ),
+              
+                     Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        "Continue with Google",
+                        style: TextStyle(
+                          color:Colors.blue[600],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                       const Expanded(
+                              child: Divider(
+                                //thickness: 0.5,
+                                color: Color.fromARGB(0, 0, 0, 0),
+                              ),
+                          ),
+                  ],
+                ),
+              ),
+
+
+
+            //padding
+              const Padding(
+                padding: EdgeInsets.all(55.0),
+                  child: Divider(
+                    //thickness: 2,
+                ),
+              ),
               //not a member?
+              Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Not a member?"),
+                const SizedBox(width: 4),
+                Text("Register now",
+                  style: TextStyle(
+                    color: Colors.blue[600],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+
             ],
           ),
         ),

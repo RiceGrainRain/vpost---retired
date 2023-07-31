@@ -22,18 +22,19 @@ class MyTextField extends StatelessWidget {
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.black),
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            fillColor: const Color.fromRGBO(238, 238, 238, 1),
-            filled: true,
-            hintText: hintText,
-            hintStyle: const TextStyle(color: Colors.black)),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.white),
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.black),
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          fillColor: const Color.fromRGBO(238, 238, 238, 1),
+          filled: true,
+          hintText: hintText,
+          hintStyle: const TextStyle(color: Colors.black),
+        ),
       ),
     );
   }
