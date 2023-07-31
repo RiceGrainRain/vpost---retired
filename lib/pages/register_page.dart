@@ -1,3 +1,4 @@
+//Manas Navale - Vpost
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projects/components/my_button.dart';
@@ -41,6 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
         showErrorMessage("Passwords dont't match!");
       }
       //pop the loading screen
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //pop the loading screen
@@ -59,7 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(32.0),
           ),
-          backgroundColor: Color.fromARGB(255, 175, 2, 36),
+          backgroundColor: const Color.fromARGB(255, 175, 2, 36),
           title: Center(
             child: Text(
               message,

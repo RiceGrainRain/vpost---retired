@@ -1,3 +1,4 @@
+//Manas Navale - Vpost
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projects/components/my_button.dart';
@@ -37,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
         password: passwordController.text,
       );
       //pop the loading screen
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //pop the loading screen
