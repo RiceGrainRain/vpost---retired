@@ -1,1 +1,2 @@
-Vpost - your centralized volunteering databse.
+Vpost - a centralized volunteering database
+
