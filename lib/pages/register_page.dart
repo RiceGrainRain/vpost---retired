@@ -5,6 +5,8 @@ import 'package:projects/components/my_button.dart';
 import 'package:projects/components/my_text_field.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
+import '../services/auth_service.dart';
+
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
   const RegisterPage({super.key, required this.onTap});
@@ -162,11 +164,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
 
                   //google
-
-                  SignInButton(
-                    Buttons.google,
-                    onPressed: () {},
-                  ),
+                    SignInButton(
+                      Buttons.google,
+                      onPressed: () => AuthService().signInWithGoogle(),
+                    ),
 
                   const Padding(
                     padding: EdgeInsets.all(2.0),

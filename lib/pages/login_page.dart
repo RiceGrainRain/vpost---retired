@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projects/components/my_button.dart';
 import 'package:projects/components/my_text_field.dart';
+import 'package:projects/services/auth_service.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
 class LoginPage extends StatefulWidget {
@@ -168,10 +169,10 @@ class _LoginPageState extends State<LoginPage> {
 
                   //google
 
-                  SignInButton(
-                    Buttons.google,
-                    onPressed: () {},
-                  ),
+                    SignInButton(
+                      Buttons.google,
+                      onPressed: () => AuthService().signInWithGoogle(),
+                    ),
 
                   const Padding(
                     padding: EdgeInsets.all(2.0),
