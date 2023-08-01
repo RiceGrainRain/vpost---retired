@@ -3,25 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projects/components/my_button.dart';
 import 'package:projects/components/my_text_field.dart';
-import 'package:projects/services/auth_service.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
-class LoginPage extends StatefulWidget {
+import '../services/auth_service.dart';
+
+class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   //controllers
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
-  //sign user in method
-  void signUserIn() async {
+  //sign user up method
+  void signUserUp() async {
     //loading screen
     showDialog(
       context: context,
@@ -32,12 +33,16 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
 
-    //try sign in
+    //try creating user
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      if (passwordController.text == confirmPasswordController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+      } else {
+        showErrorMessage("Passwords dont't match!");
+      }
       //pop the loading screen
       // ignore: use_build_context_synchronously
       Navigator.pop(context);
@@ -58,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(32.0),
           ),
-          backgroundColor: const Color.fromARGB(255, 162, 0, 33),
+          backgroundColor: const Color.fromARGB(255, 175, 2, 36),
           title: Center(
             child: Text(
               message,
@@ -97,32 +102,23 @@ class _LoginPageState extends State<LoginPage> {
 
                   //password
                   MyTextField(
-                    controller: passwordController,
+                    controller: confirmPasswordController,
                     hintText: 'Password',
                     obscureText: true,
                   ),
 
-                  //forgot password
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          'Forgot Password?',
-                          style: TextStyle(
-                              color: Colors.blue[600],
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
+                  //confirm password
+                  MyTextField(
+                    controller: passwordController,
+                    hintText: 'Confirm Password',
+                    obscureText: true,
                   ),
 
                   const SizedBox(height: 25.0),
                   //sign in
                   MyButton(
-                    text: "Sign In",
-                    onTap: signUserIn,
+                    text: "Sign Up",
+                    onTap: signUserUp,
                   ),
 
                   const SizedBox(height: 50),
@@ -168,7 +164,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
 
                   //google
-
                     SignInButton(
                       Buttons.google,
                       onPressed: () => AuthService().signInWithGoogle(),
@@ -187,12 +182,12 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Not a member?"),
+                      const Text("Already have an account?"),
                       const SizedBox(width: 4),
                       GestureDetector(
                         onTap: widget.onTap,
                         child: Text(
-                          "Register now",
+                          "Login now",
                           style: TextStyle(
                             color: Colors.blue[600],
                             fontWeight: FontWeight.bold,

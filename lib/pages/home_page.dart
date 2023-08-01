@@ -1,3 +1,4 @@
+//Manas Navale - Vpost
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -14,10 +15,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: signUserOut, icon: Icon(Icons.logout))],
+        actions: [IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout))],
       ),
       body: Center(
-        child: Text("LOGGED IN AS: " + user.email!),
+        child: Text("LOGGED IN AS: ${user.email!}"),
       ),
     );
   }
