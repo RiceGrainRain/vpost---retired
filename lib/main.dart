@@ -1,5 +1,4 @@
 //Manas Navale - Vpost
-//starting home page
 import 'package:flutter/material.dart';
 import 'package:projects/pages/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
