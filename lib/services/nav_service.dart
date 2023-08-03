@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:projects/pages/about_page.dart';
-import 'package:projects/pages/post_page.dart';
-import '../pages/bookmark.dart';
-import '../pages/search_page.dart';
-import '../pages/account_page.dart';
-import '../pages/home_page.dart';
+import 'package:projects/pages/info_pages/about_page.dart';
+import 'package:projects/pages/user_pages/post_page.dart';
+import '../pages/user_pages/bookmark.dart';
+import '../pages/user_pages/search_page.dart';
+import '../pages/info_pages/account_page.dart';
+import '../pages/user_pages/home_page.dart';
 
 class NavHome extends StatefulWidget {
   final Function()? onTap;

@@ -1,7 +1,7 @@
 //Manas Navale - Vpost
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:projects/pages/login_or_register_page.dart';
+import 'package:projects/pages/auth_pages/login_or_register_page.dart';
 import 'package:projects/services/nav_service.dart';
 
 class AuthPage extends StatelessWidget {
