@@ -6,7 +6,7 @@ import 'package:projects/pages/about_page.dart';
 import 'package:projects/pages/post_page.dart';
 import '../pages/bookmark.dart';
 import '../pages/search_page.dart';
-import '../pages/Account.dart';
+import '../pages/account_page.dart';
 import '../pages/home_page.dart';
 
 class NavHome extends StatefulWidget {
