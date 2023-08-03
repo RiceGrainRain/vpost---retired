@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projects/components/my_button.dart';
 import 'package:projects/components/my_text_field.dart';
+import 'package:projects/pages/auth_pages/forgot_password_page.dart';
 import 'package:projects/services/auth_service.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
       //pop the loading screen
       Navigator.pop(context);
       //wrong email
-      showErrorMessage(e.code);
+      showErrorMessage(e.message.toString());
     }
   }
 
@@ -58,12 +59,12 @@ class _LoginPageState extends State<LoginPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(32.0),
           ),
-          backgroundColor: const Color.fromARGB(255, 162, 0, 33),
+          backgroundColor: const Color.fromARGB(255, 251, 46, 62),
           title: Center(
             child: Text(
               message,
               style: const TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.bold),
+                  color: Colors.white, fontSize: 16),
             ),
           ),
         );
@@ -108,11 +109,19 @@ class _LoginPageState extends State<LoginPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          'Forgot Password?',
-                          style: TextStyle(
-                              color: Colors.blue[600],
-                              fontWeight: FontWeight.bold),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return const ForgotPasswordPage();
+                            }));
+                          },
+                          child: Text(
+                            'Forgot Password?',
+                            style: TextStyle(
+                                color: Colors.blue[600],
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ],
                     ),
@@ -169,10 +178,10 @@ class _LoginPageState extends State<LoginPage> {
 
                   //google
 
-                    SignInButton(
-                      Buttons.google,
-                      onPressed: () => AuthService().signInWithGoogle(),
-                    ),
+                  SignInButton(
+                    Buttons.google,
+                    onPressed: () => AuthService().signInWithGoogle(),
+                  ),
 
                   const Padding(
                     padding: EdgeInsets.all(2.0),
