@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  google_nav_bar: ^5.0.6
   sign_in_button: ^3.2.0
   flutter_svg: ^2.0.7
   google_sign_in: ^6.1.4

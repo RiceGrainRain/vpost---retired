@@ -9,6 +9,7 @@ import '../pages/search_page.dart';
 import '../pages/account_page.dart';
 import '../pages/home_page.dart';
 
+
 class NavHome extends StatefulWidget {
   final Function()? onTap;
   const NavHome({super.key, required this.onTap});
@@ -34,6 +35,7 @@ class _NavHomeState extends State<NavHome> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
+
     HomePage(),
     const SearchPage(),
     const PostPage(),
@@ -78,22 +80,27 @@ class _NavHomeState extends State<NavHome> {
                     ),
                     ),
                 
+
+
                  Padding(
                   padding: const EdgeInsets.only(left: 25.0),
                   child: ListTile(
                     onTap:() => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AccountPage())),
+
                     leading: const Icon(Icons.account_circle_rounded, color: Colors.white),
                     title: const Text("About", style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
 
+
                  Padding(
                   padding: const EdgeInsets.only(left: 25.0),
                   child: ListTile(
                     onTap:() => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AboutPage())),
                     leading: const Icon(Icons.info, color: Colors.white),
-                    title: const Text("Settings", style: TextStyle(color: Colors.white)),
+                    title: const Text("About", style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
 
@@ -152,4 +159,3 @@ class _NavHomeState extends State<NavHome> {
         ));
   }
 }
- 

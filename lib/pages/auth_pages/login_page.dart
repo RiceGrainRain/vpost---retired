@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projects/components/my_button.dart';
 import 'package:projects/components/my_text_field.dart';
+import 'package:projects/pages/auth_pages/forgot_password_page.dart';
 import 'package:projects/services/auth_service.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
@@ -81,6 +82,10 @@ class _LoginPageState extends State<LoginPage> {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
+                  const Divider(
+                    thickness: 2,  
+                  ),
+
                   //logo
                   Image.asset(
                     'lib/images/vpost.png',
@@ -108,6 +113,15 @@ class _LoginPageState extends State<LoginPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return const ForgotPasswordPage();
+                            },
+                            ),
+                          );
+                          },
+                        ),
                         Text(
                           'Forgot Password?',
                           style: TextStyle(
