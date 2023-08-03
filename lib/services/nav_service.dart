@@ -2,12 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:projects/pages/info_pages/about_page.dart';
-import 'package:projects/pages/user_pages/post_page.dart';
-import '../pages/info_pages/account_page.dart';
-import '../pages/user_pages/bookmark_page.dart';
-import '../pages/user_pages/search_page.dart';
-import '../pages/user_pages/home_page.dart';
+import 'package:projects/pages/about_page.dart';
+import 'package:projects/pages/post_page.dart';
+import '../pages/bookmark.dart';
+import '../pages/search_page.dart';
+import '../pages/account_page.dart';
+import '../pages/home_page.dart';
+
 
 class NavHome extends StatefulWidget {
   final Function()? onTap;
@@ -34,7 +35,8 @@ class _NavHomeState extends State<NavHome> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const HomePage(),
+
+    HomePage(),
     const SearchPage(),
     const PostPage(),
     const BookmarkPage(),
@@ -78,17 +80,20 @@ class _NavHomeState extends State<NavHome> {
                     ),
                     ),
                 
-                 
+
+
                  Padding(
                   padding: const EdgeInsets.only(left: 25.0),
                   child: ListTile(
                     onTap:() => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AccountPage())),
-                    leading: const Icon(Icons.account_box_rounded, color: Colors.white),
-                    title: const Text("Account", style: TextStyle(color: Colors.white)),
+
+                    leading: const Icon(Icons.account_circle_rounded, color: Colors.white),
+                    title: const Text("About", style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
-                 
-                 
+
+
                  Padding(
                   padding: const EdgeInsets.only(left: 25.0),
                   child: ListTile(
