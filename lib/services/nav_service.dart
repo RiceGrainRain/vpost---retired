@@ -54,9 +54,9 @@ class _NavHomeState extends State<NavHome> {
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.menu,
-                  color: Colors.black,
+                  color: Colors.grey.shade900,
                   size: 20.0,
                 ))),
       ),

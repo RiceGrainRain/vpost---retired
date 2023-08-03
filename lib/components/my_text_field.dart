@@ -18,7 +18,7 @@ class MyTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 25.0,
-        vertical: 8.0,
+        vertical: 5.0,
       ),
       child: TextField(
         textAlign: TextAlign.left,

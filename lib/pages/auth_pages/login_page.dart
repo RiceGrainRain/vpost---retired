@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
       builder: (context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(32.0),
+            borderRadius: BorderRadius.circular(5.0),
           ),
           backgroundColor: const Color.fromARGB(255, 251, 46, 62),
           title: Center(

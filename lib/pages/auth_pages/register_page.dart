@@ -1,11 +1,10 @@
 //Manas Navale - Vpost
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:projects/components/my_button.dart';
 import 'package:projects/components/my_text_field.dart';
-import 'package:sign_in_button/sign_in_button.dart';
-
-import '../../services/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -20,6 +19,20 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final ageController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    ageController.dispose();
+    super.dispose();
+  }
 
   //sign user up method
   void signUserUp() async {
@@ -32,17 +45,36 @@ class _RegisterPageState extends State<RegisterPage> {
         );
       },
     );
+    
+    Future addUserDetails(String firstName, String lastName, int age, String email) async {
+        await FirebaseFirestore.instance.collection('users').add({
+          'first name' : firstName,
+          'last name' : lastName,
+          'age' : age,
+          'email' : email,
+        });
+      }
 
     //try creating user
     try {
       if (passwordController.text == confirmPasswordController.text) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+
+        //adding user details;
+        addUserDetails(
+          firstNameController.text.trim(),
+          lastNameController.text.trim(),
+          int.parse(ageController.text.trim()),
+          emailController.text.trim(),
         );
       } else {
         showErrorMessage("Passwords dont't match!");
       }
+
+
       //pop the loading screen
       // ignore: use_build_context_synchronously
       Navigator.pop(context);
@@ -50,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
       //pop the loading screen
       Navigator.pop(context);
       //wrong email
-      showErrorMessage(e.code);
+      showErrorMessage(e.message.toString());
     }
   }
 
@@ -61,14 +93,14 @@ class _RegisterPageState extends State<RegisterPage> {
       builder: (context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(32.0),
+            borderRadius: BorderRadius.circular(5.0),
           ),
-          backgroundColor: const Color.fromARGB(255, 175, 2, 36),
+          backgroundColor: const Color.fromARGB(255, 251, 46, 62),
           title: Center(
             child: Text(
               message,
               style: const TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.bold),
+                  color: Colors.white, fontSize: 16),
             ),
           ),
         );
@@ -87,11 +119,37 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 children: [
                   //logo
-                  Image.asset(
-                    'lib/images/vpost.png',
-                    height: 200,
-                    width: 200,
-                  ),
+                  Text(
+                      textAlign: TextAlign.center,
+                      "Ready to volunteer?",
+                      style: GoogleFonts.roboto(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                      )),
+
+                  const SizedBox(height: 10),
+
+                  const Text("Regster below with your details!"),
+
+                  const SizedBox(height: 10),
+
+                  //fname
+                  MyTextField(
+                      controller: firstNameController,
+                      hintText: 'First Name',
+                      obscureText: false),
+
+                  //lname
+                  MyTextField(
+                      controller: lastNameController,
+                      hintText: 'Last Name',
+                      obscureText: false),
+
+                  //age
+                  MyTextField(
+                      controller: ageController,
+                      hintText: 'Age',
+                      obscureText: false),
 
                   //email
                   MyTextField(
@@ -114,87 +172,34 @@ class _RegisterPageState extends State<RegisterPage> {
                     obscureText: true,
                   ),
 
-                  const SizedBox(height: 25.0),
+                  const SizedBox(height: 10.0),
                   //sign in
                   MyButton(
                     text: "Sign Up",
                     onTap: signUserUp,
                   ),
+                  const SizedBox(height: 10),
 
-                  const SizedBox(height: 50),
-
-                  //continue with
+                  //not a member?
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Divider(
-                            thickness: 0.5,
-                            color: Colors.grey[400],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0,
-                          ),
+                        const Text("Already have an account?"),
+                        const SizedBox(width: 4),
+                        GestureDetector(
+                          onTap: widget.onTap,
                           child: Text(
-                            "OR",
-                            style: TextStyle(color: Colors.grey[700]),
-                          ),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            thickness: 0.5,
-                            color: Colors.grey[400],
+                            "Login now",
+                            style: TextStyle(
+                              color: Colors.blue[600],
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-
-                  //padding
-
-                  const Padding(
-                    padding: EdgeInsets.all(5.0),
-                    child: Divider(
-                      color: Color.fromARGB(0, 0, 0, 0),
-                      //thickness: 2,
-                    ),
-                  ),
-
-                  //google
-                    SignInButton(
-                      Buttons.google,
-                      onPressed: () => AuthService().signInWithGoogle(),
-                    ),
-
-                  const Padding(
-                    padding: EdgeInsets.all(2.0),
-                    child: Divider(
-                      color: Color.fromARGB(0, 0, 0, 0),
-                      //thickness: 2,
-                    ),
-                  ),
-
-                  //not a member?
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Already have an account?"),
-                      const SizedBox(width: 4),
-                      GestureDetector(
-                        onTap: widget.onTap,
-                        child: Text(
-                          "Login now",
-                          style: TextStyle(
-                            color: Colors.blue[600],
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ],
               )),
