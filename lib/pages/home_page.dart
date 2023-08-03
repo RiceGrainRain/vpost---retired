@@ -13,12 +13,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout))],
-      ),
+    return const Scaffold(
       body: Center(
-        child: Text("LOGGED IN AS: ${user.email!}"),
+        child: Text("Home Page"),
       ),
     );
   }
