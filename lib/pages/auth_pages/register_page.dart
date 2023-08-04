@@ -76,7 +76,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
       //pop the loading screen
-      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //pop the loading screen
@@ -136,39 +135,39 @@ class _RegisterPageState extends State<RegisterPage> {
                   //fname
                   MyTextField(
                       controller: firstNameController,
-                      hintText: 'First Name',
+                      labelText: 'First Name',
                       obscureText: false),
 
                   //lname
                   MyTextField(
                       controller: lastNameController,
-                      hintText: 'Last Name',
+                      labelText: 'Last Name',
                       obscureText: false),
 
                   //age
                   MyTextField(
                       controller: ageController,
-                      hintText: 'Age',
+                      labelText: 'Age',
                       obscureText: false),
 
                   //email
                   MyTextField(
                     controller: emailController,
-                    hintText: 'Email',
+                    labelText: 'Email',
                     obscureText: false,
                   ),
 
                   //password
                   MyTextField(
                     controller: confirmPasswordController,
-                    hintText: 'Password',
+                    labelText: 'Password',
                     obscureText: true,
                   ),
 
                   //confirm password
                   MyTextField(
                     controller: passwordController,
-                    hintText: 'Confirm Password',
+                    labelText: 'Confirm Password',
                     obscureText: true,
                   ),
 

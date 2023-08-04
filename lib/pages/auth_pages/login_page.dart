@@ -39,8 +39,7 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
-      //pop the loading screen
-      // ignore: use_build_context_synchronously
+      //pop the loading screen 
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //pop the loading screen
@@ -92,14 +91,14 @@ class _LoginPageState extends State<LoginPage> {
                   //email
                   MyTextField(
                     controller: emailController,
-                    hintText: 'Email',
+                    labelText: 'Email',
                     obscureText: false,
                   ),
 
                   //password
                   MyTextField(
                     controller: passwordController,
-                    hintText: 'Password',
+                    labelText: 'Password',
                     obscureText: true,
                   ),
 
