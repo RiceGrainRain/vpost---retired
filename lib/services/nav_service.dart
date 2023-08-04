@@ -12,7 +12,6 @@ import '../pages/user_pages/home_page.dart';
 class NavHome extends StatefulWidget {
   final Function()? onTap;
   const NavHome({super.key, required this.onTap});
-  
 
   @override
   State<NavHome> createState() => _NavHomeState();
@@ -31,6 +30,7 @@ class _NavHomeState extends State<NavHome> {
     });
   }
 
+
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
@@ -45,23 +45,25 @@ class _NavHomeState extends State<NavHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //resizeToAvoidBottomInset: false,
-       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Builder(
+        //resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          backgroundColor: Colors.grey.shade900,
+          elevation: 0,
+          leading: Builder(
             builder: (context) => IconButton(
-                splashRadius: 20,
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.grey.shade900,
-                  size: 20.0,
-                ))),
-      ),
-      drawer: Drawer(
+              splashRadius: 20,
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.white,
+                size: 20.0,
+              ),
+            ),
+          ),
+        ),
+        drawer: Drawer(
           backgroundColor: Colors.grey.shade900,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,52 +72,62 @@ class _NavHomeState extends State<NavHome> {
                 children: [
                   DrawerHeader(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 25, horizontal: 10),
                       child: Image.asset(
-                      'lib/images/vpost-dark.png',
-                      height: 100,
-                      width: 100,
+                        'lib/images/vpost-for-darkmode.png',
+                        height: 100,
+                        width: 100,
                       ),
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25.0),
+                    child: ListTile(
+                      onTap: () => Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) => const AccountPage())),
+                      leading: const Icon(Icons.account_circle_rounded,
+                          color: Colors.white),
+                      title: const Text(
+                        "Account",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                
-                 Padding(
-                  padding: const EdgeInsets.only(left: 25.0),
-                  child: ListTile(
-                    onTap:() => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AccountPage())),
-                    leading: const Icon(Icons.account_circle_rounded, color: Colors.white),
-                    title: const Text("About", style: TextStyle(color: Colors.white),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25.0),
+                    child: ListTile(
+                      onTap: () => Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) => const AboutPage())),
+                      leading: const Icon(Icons.info, color: Colors.white),
+                      title: const Text("About",
+                          style: TextStyle(color: Colors.white)),
                     ),
                   ),
-                ),
-
-                 Padding(
-                  padding: const EdgeInsets.only(left: 25.0),
-                  child: ListTile(
-                    onTap:() => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AboutPage())),
-                    leading: const Icon(Icons.info, color: Colors.white),
-                    title: const Text("Settings", style: TextStyle(color: Colors.white)),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25.0, bottom: 25),
+                    child: ListTile(
+                      onTap: signUserOut,
+                      leading: const Icon(Icons.logout_rounded,
+                          color: Color.fromARGB(255, 251, 46, 62)),
+                      title: const Text("Log Out",
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 251, 46, 62),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.5,
+                          )),
+                    ),
                   ),
-                ),
-
-    
-                
-                 Padding(
-                  padding: const EdgeInsets.only(left: 25.0, bottom: 25),
-                  child: ListTile(
-                    onTap: signUserOut,
-                    leading: const Icon(Icons.logout_rounded, color: Color.fromARGB(255, 251, 46, 62)),
-                    title: const Text("Log Out", style: TextStyle(color: Color.fromARGB(255, 251, 46, 62), fontWeight: FontWeight.bold, fontSize: 14.5,)),
-                  ),
-                ),
                 ],
               ),
-              ],
+            ],
           ),
         ),
         body: _pages[_selectedIndex],
         bottomNavigationBar: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Container(
             color: Colors.grey.shade900,
             child: Padding(
@@ -154,4 +166,3 @@ class _NavHomeState extends State<NavHome> {
         ));
   }
 }
- 

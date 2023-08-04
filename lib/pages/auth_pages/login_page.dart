@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   //logo
                   Image.asset(
-                    'lib/images/vpost.png',
+                    'lib/images/vpost-for-darkmode.png',
                     height: 200,
                     width: 200,
                   ),
@@ -134,32 +134,32 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: signUserIn,
                   ),
 
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 25),
 
                   //continue with
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 40.0),
                     child: Row(
                       children: [
-                        Expanded(
+                         Expanded(
                           child: Divider(
                             thickness: 0.5,
-                            color: Colors.grey[400],
+                            color: Colors.white,
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                             horizontal: 10.0,
                           ),
                           child: Text(
                             "OR",
-                            style: TextStyle(color: Colors.grey[700]),
+                            style: TextStyle(color: Colors.white),
                           ),
                         ),
                         Expanded(
                           child: Divider(
                             thickness: 0.5,
-                            color: Colors.grey[400],
+                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -168,18 +168,12 @@ class _LoginPageState extends State<LoginPage> {
 
                   //padding
 
-                  const Padding(
-                    padding: EdgeInsets.all(5.0),
-                    child: Divider(
-                      color: Color.fromARGB(0, 0, 0, 0),
-                      //thickness: 2,
-                    ),
-                  ),
+                const SizedBox(height: 25,),
 
                   //google
 
                   SignInButton(
-                    Buttons.google,
+                    Buttons.googleDark,
                     onPressed: () => AuthService().signInWithGoogle(),
                   ),
 
@@ -196,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Not a member?"),
+                      const Text("Not a member?", style: TextStyle(color: Colors.white)),
                       const SizedBox(width: 4),
                       GestureDetector(
                         onTap: widget.onTap,

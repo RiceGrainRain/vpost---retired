@@ -21,6 +21,7 @@ class MyTextField extends StatelessWidget {
         vertical: 5.0,
       ),
       child: TextField(
+        style: const TextStyle(color: Colors.white),
         textAlign: TextAlign.left,
         textAlignVertical: TextAlignVertical.center,
         controller: controller,
@@ -39,12 +40,12 @@ class MyTextField extends StatelessWidget {
               ),
             borderRadius: BorderRadius.circular(15.0),
           ),
-          fillColor: Colors.grey.shade200,
+          fillColor: Colors.grey.shade900,
           filled: true,
           labelText: labelText,
           floatingLabelStyle: TextStyle(color: Colors.blue[600]),
-          hintStyle: const TextStyle(
-            color: Colors.black,
+          labelStyle:TextStyle(
+            color: Colors.grey.shade400,
             fontSize: 14.0,
             ),
         ),
