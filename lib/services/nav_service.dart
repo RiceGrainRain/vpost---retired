@@ -45,7 +45,7 @@ class _NavHomeState extends State<NavHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      //resizeToAvoidBottomInset: false,
        appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -115,6 +115,7 @@ class _NavHomeState extends State<NavHome> {
         ),
         body: _pages[_selectedIndex],
         bottomNavigationBar: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
           child: Container(
             color: Colors.grey.shade900,
             child: Padding(
