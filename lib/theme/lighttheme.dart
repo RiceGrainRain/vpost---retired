@@ -6,8 +6,8 @@ ThemeData lightTheme = ThemeData(
   iconTheme: IconThemeData(color: Colors.black),),
 
   colorScheme: ColorScheme.light(
-    background: Colors.grey[300]!,
-    primary: Colors.grey[200]!,
-    secondary: Colors.grey[300]!,
+    background: Colors.grey.shade300,
+    primary: Colors.grey.shade200,
+    secondary: Colors.grey.shade300,
   )
 );
