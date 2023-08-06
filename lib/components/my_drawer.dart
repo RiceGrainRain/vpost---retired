@@ -12,7 +12,7 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.grey.shade900,
+      backgroundColor: Colors.black,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -29,39 +29,57 @@ class MyDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-              ListTile(
-                leading: const Icon(CupertinoIcons.person_circle),
-                title: const Text("Account"),
-                onTap: () {},
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading: const Icon(CupertinoIcons.person_circle),
+                  title: const Text("Account"),
+                  onTap: () {},
+                ),
               ),
-              ListTile(
-                leading: const Icon(CupertinoIcons.info_circle),
-                title: const Text("Info"),
-                onTap: () {},
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading: const Icon(CupertinoIcons.info_circle),
+                  title: const Text("Info"),
+                  onTap: () {},
+                ),
               ),
-              ListTile(
-                leading: const Icon(CupertinoIcons.bell_circle),
-                title: const Text("Notifications"),
-                onTap: () {},
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading: const Icon(CupertinoIcons.bell_circle),
+                  title: const Text("Notifications"),
+                  onTap: () {},
+                ),
               ),
-              ListTile(
-                leading: const Icon(CupertinoIcons.exclamationmark_circle),
-                title: const Text("Report"),
-                onTap: () {},
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading: const Icon(CupertinoIcons.exclamationmark_circle),
+                  title: const Text("Report"),
+                  onTap: () {},
+                ),
               ),
-              ListTile(
-                leading: const Icon(CupertinoIcons.arrow_up_circle),
-                title: const Text("Request"),
-                onTap: () {},
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading: const Icon(CupertinoIcons.arrow_up_circle),
+                  title: const Text("Request"),
+                  onTap: () {},
+                ),
               ),
-              ListTile(
-                leading: const Icon(CupertinoIcons.chevron_left_square_fill,
-                    color: Color.fromARGB(255, 251, 46, 62)),
-                title: const Text("Sign Out",
-                    style: TextStyle(color: Color.fromARGB(255, 251, 46, 62))),
-                onTap: () {
-                  signUserOut();
-                },
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListTile(
+                  leading: const Icon(CupertinoIcons.chevron_left_square_fill,
+                      color: Color.fromARGB(255, 251, 46, 62)),
+                  title: const Text("Sign Out",
+                      style: TextStyle(color: Color.fromARGB(255, 251, 46, 62))),
+                  onTap: () {
+                    signUserOut();
+                  },
+                ),
               ),
             ],
           ),
