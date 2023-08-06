@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 
-class BookmarkPage extends StatefulWidget {
-  const BookmarkPage({super.key});
+class PostPage extends StatefulWidget {
+  const PostPage({super.key});
 
   @override
-  State<BookmarkPage> createState() => _BookmarkPageState();
+  State<PostPage> createState() => _PostPageState();
 }
 
-class _BookmarkPageState extends State<BookmarkPage> {
+class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Bookmark Page"),
+      child: Text("Post Page"),
     );
   }
 }

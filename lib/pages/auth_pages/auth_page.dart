@@ -1,8 +1,9 @@
 //Manas Navale - Vpost
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:projects/components/my_navbar.dart';
 import 'package:projects/pages/auth_pages/login_or_register_page.dart';
-import '../user_pages/home_page.dart';
+
 
 
 class AuthPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           //logged in
           if (snapshot.hasData) {
-            return HomePage();
+            return const NavState();
           }
 
           //NOT logged in
