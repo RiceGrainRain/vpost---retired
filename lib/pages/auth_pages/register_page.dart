@@ -111,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 22, 22, 22),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

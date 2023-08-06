@@ -29,7 +29,7 @@ class MyTextField extends StatelessWidget {
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.grey.shade800,
+              color: Colors.grey.shade900,
             ),
             borderRadius: BorderRadius.circular(15.0),
           ),
@@ -39,12 +39,13 @@ class MyTextField extends StatelessWidget {
               ),
             borderRadius: BorderRadius.circular(15.0),
           ),
-          fillColor: Theme.of(context).colorScheme.primary,
+          fillColor: Colors.grey.shade800,
           filled: true,
           labelText: labelText,
           floatingLabelStyle: const TextStyle(color: Colors.white),
-          labelStyle:TextStyle(
-            color: Theme.of(context).colorScheme.secondary,
+          labelStyle:const TextStyle(
+            color:  Color.fromARGB(255, 22, 22, 22),
+            fontWeight: FontWeight.bold,
             fontSize: 14.0,
             ),
         ),
