@@ -43,8 +43,8 @@ class MyTextField extends StatelessWidget {
           filled: true,
           labelText: labelText,
           floatingLabelStyle: const TextStyle(color: Colors.white),
-          labelStyle:const TextStyle(
-            color:  Color.fromARGB(255, 22, 22, 22),
+          labelStyle:TextStyle(
+            color:  Colors.grey.shade200,
             fontWeight: FontWeight.bold,
             fontSize: 14.0,
             ),

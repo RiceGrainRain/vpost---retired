@@ -47,7 +47,7 @@ class _NavStateState extends State<NavState> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
-              splashColor: Colors.black87,
+              splashRadius: 20,
               enableFeedback: false,
               onPressed: () {
                 setState(() {
@@ -67,7 +67,7 @@ class _NavStateState extends State<NavState> {
                     ),
             ),
             IconButton(
-              splashColor: Colors.black87,
+              splashRadius: 20,
               enableFeedback: false,
               onPressed: () {
                 setState(() {
@@ -87,7 +87,7 @@ class _NavStateState extends State<NavState> {
                     ),
             ),
             IconButton(
-              splashColor: Colors.black87,
+              splashRadius: 20,
               enableFeedback: false,
               onPressed: () {
                 setState(() {
@@ -107,7 +107,7 @@ class _NavStateState extends State<NavState> {
                     ),
             ),
             IconButton(
-              splashColor: Colors.black87,
+              splashRadius: 20,
               enableFeedback: false,
               onPressed: () {
                 setState(() {

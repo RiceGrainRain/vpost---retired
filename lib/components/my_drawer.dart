@@ -32,40 +32,40 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: ListTile(
-                  leading: const Icon(CupertinoIcons.person_circle),
-                  title: const Text("Account"),
+                  leading: const Icon(CupertinoIcons.person_circle, color: Colors.white),
+                  title: const Text("Account", style: TextStyle(color: Colors.white)),
                   onTap: () {},
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: ListTile(
-                  leading: const Icon(CupertinoIcons.info_circle),
-                  title: const Text("Info"),
+                  leading: const Icon(CupertinoIcons.info_circle, color: Colors.white),
+                  title: const Text("Info", style: TextStyle(color: Colors.white)),
                   onTap: () {},
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: ListTile(
-                  leading: const Icon(CupertinoIcons.bell_circle),
-                  title: const Text("Notifications"),
+                  leading: const Icon(CupertinoIcons.bell_circle, color: Colors.white),
+                  title: const Text("Notifications", style: TextStyle(color: Colors.white)),
                   onTap: () {},
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: ListTile(
-                  leading: const Icon(CupertinoIcons.exclamationmark_circle),
-                  title: const Text("Report"),
+                  leading: const Icon(CupertinoIcons.exclamationmark_circle, color: Colors.white),
+                  title: const Text("Report", style: TextStyle(color: Colors.white)),
                   onTap: () {},
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: ListTile(
-                  leading: const Icon(CupertinoIcons.arrow_up_circle),
-                  title: const Text("Request"),
+                  leading: const Icon(CupertinoIcons.arrow_up_circle, color: Colors.white),
+                  title: const Text("Request", style: TextStyle(color: Colors.white)),
                   onTap: () {},
                 ),
               ),

@@ -6,7 +6,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   /// you can add more fields that meet your needs
 
-  MyAppBar({super.key, required this.appBar});
+  const MyAppBar({super.key, required this.appBar});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +16,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         icon: const Icon(
           Icons.menu,
           size: 25,
+          color: Colors.white,
         ),
         onPressed: () {
           Scaffold.of(context).openDrawer();
