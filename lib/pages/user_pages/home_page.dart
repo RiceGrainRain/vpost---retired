@@ -25,16 +25,8 @@ class HomePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-          child: Text(
-            "Search for a service",
-            style: TextStyle(
-                color: Colors.black87, fontSize: 22.0, fontWeight: FontWeight.bold),
-          ),
-        ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           child: TextField(
             style: const TextStyle(color: Colors.white),
             decoration: InputDecoration(

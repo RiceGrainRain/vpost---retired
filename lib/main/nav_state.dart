@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projects/pages/user_pages/home_page.dart';
 import 'package:projects/pages/user_pages/location_page.dart';
-import 'package:projects/pages/user_pages/post_page.dart';
+import 'package:projects/pages/post_page/post_page.dart';
 import 'package:projects/pages/user_pages/settings_page.dart';
 
-import 'my_appbar.dart';
-import 'my_drawer.dart';
+import '../components/my_appbar.dart';
+import '../components/my_drawer.dart';
 
 
 class NavState extends StatefulWidget {

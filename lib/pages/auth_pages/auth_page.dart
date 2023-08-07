@@ -1,7 +1,7 @@
 //Manas Navale - Vpost
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:projects/components/my_navbar.dart';
+import 'package:projects/main/nav_state.dart';
 import 'package:projects/pages/auth_pages/login_or_register_page.dart';
 
 
