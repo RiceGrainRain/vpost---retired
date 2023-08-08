@@ -1,8 +1,10 @@
+import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projects/components/post_components/addlocation.dart';
 import 'package:projects/components/post_components/attachimages.dart';
 import 'package:projects/components/post_components/my_linkfield.dart';
-//import 'package:projects/components/post_components/my_imagebutton.dart';
 import 'package:projects/components/post_components/my_postdescrip.dart';
 import 'package:projects/components/post_components/my_posttitle.dart';
 import 'package:projects/components/post_components/uploadpost.dart';
@@ -19,6 +21,100 @@ class _CreatePostPageState extends State<CreatePostPage> {
   final descriptionController = TextEditingController();
   final infolinkController = TextEditingController();
   final gclinkController = TextEditingController();
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    descriptionController.dispose();
+    infolinkController.dispose();
+    gclinkController.dispose();
+    super.dispose();
+  }
+
+  void uploadPost() async {
+    //loading screen
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    Future addPostDetails(
+      String title,
+      String description,
+      String infoLink,
+      String gcLink,
+    ) async {
+      await FirebaseFirestore.instance.collection('posts').add({
+        'Title': title,
+        'Description': description,
+        'InfoLink': infoLink,
+        'GcLink': gcLink,
+      });
+    }
+
+    try {
+      addPostDetails(
+        titleController.text.trim(),
+        descriptionController.text.trim(),
+        infolinkController.text.trim(),
+        gclinkController.text.trim(),
+      );
+
+      //pop the loading screen
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      //pop the loading screen
+      Navigator.pop(context);
+      //wrong email
+      showErrorMessage(e.message.toString());
+    }
+  }
+
+  //wrong email popup
+  void showErrorMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          backgroundColor: const Color.fromARGB(255, 251, 46, 62),
+          title: Center(
+            child: Text(
+              message,
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void showSuccessMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          backgroundColor: Colors.blue[600],
+          title: const Center(
+            child: Text(
+              "Post successful!",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +164,12 @@ class _CreatePostPageState extends State<CreatePostPage> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: UploadPost(onTap: () {
-                Navigator.pop(context);
+                uploadPost();
+                showSuccessMessage();
+                Timer(Duration(seconds: 1), () {
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                });
               }),
             )
           ],
