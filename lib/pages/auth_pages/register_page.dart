@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projects/components/my_button.dart';
-import 'package:projects/components/my_text_field.dart';
+import 'package:projects/components/auth_components/my_button.dart';
+import 'package:projects/components/auth_components/my_text_field.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;

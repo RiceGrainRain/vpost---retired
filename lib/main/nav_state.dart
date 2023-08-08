@@ -5,8 +5,8 @@ import 'package:projects/pages/user_pages/location_page.dart';
 import 'package:projects/pages/post_page/post_page.dart';
 import 'package:projects/pages/user_pages/settings_page.dart';
 
-import '../components/my_appbar.dart';
-import '../components/my_drawer.dart';
+import '../components/nav_components/my_appbar.dart';
+import '../components/nav_components/my_drawer.dart';
 
 
 class NavState extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projects/components/my_postbutton.dart';
+import 'package:projects/components/post_components/my_postbutton.dart';
 import 'package:projects/pages/post_page/create_post.dart';
 
 class MyPosts extends StatefulWidget {
