@@ -20,7 +20,7 @@ class MyPostTitle extends StatelessWidget {
       child: SizedBox(
         height: 70,
         child: TextField(
-          maxLength: 40,
+          maxLength: 35,
           maxLines: 1,
           cursorColor: Colors.grey.shade600,
           autocorrect: true,

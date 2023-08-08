@@ -47,6 +47,7 @@ dependencies:
   rive: ^0.11.12
   persistent_bottom_nav_bar: ^5.0.2
   image_picker: ^1.0.2
+  confetti: ^0.7.0
 
 dev_dependencies:
   flutter_test:
