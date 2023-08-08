@@ -75,7 +75,7 @@ class MyDrawer extends StatelessWidget {
                   leading: const Icon(CupertinoIcons.chevron_left_square_fill,
                       color: Color.fromARGB(255, 251, 46, 62)),
                   title: const Text("Sign Out",
-                      style: TextStyle(color: Color.fromARGB(255, 251, 46, 62))),
+                      style: TextStyle(color: Color.fromARGB(255, 251, 46, 62), fontWeight: FontWeight.bold)),
                   onTap: () {
                     signUserOut();
                   },

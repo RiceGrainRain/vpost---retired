@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyPostButton extends StatelessWidget {
-  final Function()? onTap;
+  final Function()? onPressed;
 
-  const MyPostButton({super.key, required this.onTap});
+  const MyPostButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class MyPostButton extends StatelessWidget {
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           hoverColor: Colors.transparent,
-          onPressed: () {},
+          onPressed: onPressed,
           icon: const Icon(
             CupertinoIcons.add_circled_solid,
             color: Color.fromARGB(255,30,195,142),
