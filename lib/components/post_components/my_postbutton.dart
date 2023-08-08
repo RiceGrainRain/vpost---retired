@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyPostButton extends StatelessWidget {
@@ -18,9 +17,9 @@ class MyPostButton extends StatelessWidget {
           highlightColor: Colors.transparent,
           hoverColor: Colors.transparent,
           onPressed: onPressed,
-          icon: const Icon(
-            CupertinoIcons.add_circled_solid,
-            color: Color.fromARGB(255,30,195,142),
+          icon: Icon(
+            Icons.add_circle_rounded,
+            color: Colors.blue[600],
             size: 60,
           ),
         ),
