@@ -7,8 +7,6 @@ import 'package:projects/components/post_components/my_postdescrip.dart';
 import 'package:projects/components/post_components/my_posttitle.dart';
 import 'package:projects/components/post_components/uploadpost.dart';
 
-
-
 class CreatePostPage extends StatefulWidget {
   const CreatePostPage({super.key});
 
@@ -29,19 +27,28 @@ class _CreatePostPageState extends State<CreatePostPage> {
           color: Colors.white,
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text("Create a post", style: TextStyle(fontSize: 18),),
+        title: const Text(
+          "Create a post",
+          style: TextStyle(fontSize: 18),
+        ),
         backgroundColor: const Color.fromARGB(255, 22, 22, 22),
       ),
-       body: SingleChildScrollView(
+      body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             MyPostTitle(controller: titleController, hintText: "Title"),
-            MyPostDescription(controller: descriptionController, hintText: "Write a description"),
-            MyLinkField(controller: infolinkController, hintText: "Add any informational links"),
+            MyPostDescription(
+                controller: descriptionController,
+                hintText: "Write a description"),
+            MyLinkField(
+                controller: infolinkController,
+                hintText: "Add any informational links"),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 6.0),
-              child: MyLinkField(controller: gclinkController, hintText: "Add any groupchat links"),
+              child: MyLinkField(
+                  controller: gclinkController,
+                  hintText: "Add any groupchat links"),
             ),
             const Padding(
               padding: EdgeInsets.only(top: 20.0),
@@ -60,7 +67,9 @@ class _CreatePostPageState extends State<CreatePostPage> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: UploadPost(onTap: (){}),
+              child: UploadPost(onTap: () {
+                Navigator.pop(context);
+              }),
             )
           ],
         ),
