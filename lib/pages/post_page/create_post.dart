@@ -1,13 +1,17 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:projects/components/post_components/addlocation.dart';
 import 'package:projects/components/post_components/attachimages.dart';
 import 'package:projects/components/post_components/my_linkfield.dart';
 import 'package:projects/components/post_components/my_postdescrip.dart';
 import 'package:projects/components/post_components/my_posttitle.dart';
 import 'package:projects/components/post_components/uploadpost.dart';
+
 
 class CreatePostPage extends StatefulWidget {
   const CreatePostPage({super.key});
@@ -139,6 +143,8 @@ class _CreatePostPageState extends State<CreatePostPage> {
     );
   }
 
+  String imageUrl = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -169,15 +175,40 @@ class _CreatePostPageState extends State<CreatePostPage> {
                 controller: gclinkController,
                 hintText: "Add any groupchat links"),
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 20.0),
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
             child: Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 24.0),
-                  child: AttachImages(),
+                  padding: const EdgeInsets.only(left: 24.0),
+                  child: AttachImages(onPressed: () async {
+                    //image pick
+                    ImagePicker imagePicker = ImagePicker();
+                    XFile? file = await imagePicker.pickImage(
+                        source: ImageSource.gallery);
+
+                    //Upload to Firebase Storage.
+                    Reference referenceRoot = FirebaseStorage.instance.ref();
+                    Reference referenceDirImages =
+                        referenceRoot.child('images');
+
+                    String uniqueFileName =
+                        DateTime.now().millisecondsSinceEpoch.toString();
+
+                    //makes a reference
+                    Reference referenceImageToUpload =
+                        referenceDirImages.child(uniqueFileName);
+
+                    //Store file
+                    try {
+                      await referenceImageToUpload.putFile((File(file!.path)));
+                      imageUrl = await referenceImageToUpload.getDownloadURL();
+                    } catch (error) {
+                      showErrorMessage("Problem uploading image");
+                    }
+                  }),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: AddLocation(),
                 )

@@ -111,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //resizeToAvoidBottomInset: false,
-      backgroundColor: const Color.fromARGB(255, 22, 22, 22),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -125,12 +125,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: GoogleFonts.roboto(
                         fontSize: 48,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: const Color.fromARGB(255, 22, 22, 22),
                       )),
 
                   const SizedBox(height: 10),
 
-                  const Text("Regster below with your details!", style: TextStyle(color: Colors.white)),
+                  const Text("Regster below with your details!", style: TextStyle(color: Color.fromARGB(255, 22, 22, 22))),
 
                   const SizedBox(height: 10),
 
@@ -187,7 +187,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Already have an account?", style: TextStyle(color: Colors.white)),
+                        const Text("Already have an account?", style: TextStyle(color: Color.fromARGB(255, 22, 22, 22))),
                         const SizedBox(width: 4),
                         GestureDetector(
                           onTap: widget.onTap,
