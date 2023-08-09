@@ -17,6 +17,7 @@ class CreatePostPage extends StatefulWidget {
 }
 
 class _CreatePostPageState extends State<CreatePostPage> {
+  bool isLoaded = false;
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
   final infolinkController = TextEditingController();
@@ -74,7 +75,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
     }
   }
 
-  //wrong email popup
+  //error popup
   void showErrorMessage(String message) {
     showDialog(
       context: context,
@@ -88,6 +89,29 @@ class _CreatePostPageState extends State<CreatePostPage> {
             child: Text(
               message,
               style: const TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void showAlertMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          backgroundColor: Colors.amber,
+          title: Center(
+            child: Text(
+              message,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         );
@@ -131,49 +155,68 @@ class _CreatePostPageState extends State<CreatePostPage> {
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            MyPostTitle(controller: titleController, hintText: "Title"),
-            MyPostDescription(
-                controller: descriptionController,
-                hintText: "Write a description"),
-            MyLinkField(
-                controller: infolinkController,
-                hintText: "Add any informational links"),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6.0),
-              child: MyLinkField(
-                  controller: gclinkController,
-                  hintText: "Add any groupchat links"),
+        child: Column(children: [
+          MyPostTitle(controller: titleController, hintText: "Title"),
+          MyPostDescription(
+              controller: descriptionController,
+              hintText: "Write a description"),
+          MyLinkField(
+              controller: infolinkController,
+              hintText: "Add any informational links"),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6.0),
+            child: MyLinkField(
+                controller: gclinkController,
+                hintText: "Add any groupchat links"),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 20.0),
+            child: Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 24.0),
+                  child: AttachImages(),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: AddLocation(),
+                )
+              ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 20.0),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 24.0),
-                    child: AttachImages(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: AddLocation(),
-                  )
-                ],
-              ),
-            ),
-            Padding(
+          ),
+          Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: UploadPost(onTap: () {
-                uploadPost();
-                showSuccessMessage();
-                Timer(Duration(seconds: 1), () {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                });
-              }),
-            )
-          ],
-        ),
+                if (titleController.text.isEmpty) {
+                  showErrorMessage("Title cannot be empty");
+                } else if (descriptionController.text.isEmpty) {
+                  showErrorMessage("Description Cannot be empty");
+                } else {
+                  if (isLoaded) {
+                    uploadPost();
+                    showSuccessMessage();
+                    Timer(const Duration(seconds: 1), () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    });
+                  } else {
+                    if (infolinkController.text.isEmpty ||
+                        gclinkController.text.isEmpty) {
+                      showAlertMessage(
+                          "Missing some fields! Hit upload to post anyways!");
+                      isLoaded = true;
+                    } else {
+                      uploadPost();
+                      showSuccessMessage();
+                      Timer(const Duration(seconds: 1), () {
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      });
+                    }
+                  }
+                }
+              }))
+        ]),
       ),
     );
   }

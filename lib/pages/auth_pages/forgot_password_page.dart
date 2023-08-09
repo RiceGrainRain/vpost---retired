@@ -64,10 +64,18 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 22, 22, 22),
+      backgroundColor: Colors.white,
       //resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.black87,
+        leading: BackButton(
+          color: Colors.white,
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: const Text(
+          "Forgot Password",
+          style: TextStyle(fontSize: 18),
+        ),
+        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

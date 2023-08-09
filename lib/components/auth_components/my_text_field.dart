@@ -21,30 +21,33 @@ class MyTextField extends StatelessWidget {
         vertical: 5.0,
       ),
       child: TextField(
-        style: const TextStyle(color: Colors.white),
+        cursorColor: Colors.grey.shade600,
+        style: const TextStyle(color: Colors.black),
         textAlign: TextAlign.left,
         textAlignVertical: TextAlignVertical.center,
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey.shade900,
+            borderSide: const BorderSide(
+              color: Colors.black87,
             ),
             borderRadius: BorderRadius.circular(15.0),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.white,
+            borderSide: BorderSide(
+              color: Colors.blue.shade600,
+              width: 2.0,
               ),
             borderRadius: BorderRadius.circular(15.0),
+            
           ),
-          fillColor: Colors.grey.shade800,
+          fillColor: Colors.grey.shade200,
           filled: true,
           labelText: labelText,
-          floatingLabelStyle: const TextStyle(color: Colors.white),
-          labelStyle:TextStyle(
-            color:  Colors.grey.shade200,
+          floatingLabelStyle: TextStyle(color: Colors.blue[600], fontWeight: FontWeight.bold),
+          labelStyle: const TextStyle(
+            color:  Colors.black54,
             fontWeight: FontWeight.bold,
             fontSize: 14.0,
             ),

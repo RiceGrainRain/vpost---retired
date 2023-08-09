@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //resizeToAvoidBottomInset: false,
-      backgroundColor: const Color.fromARGB(255, 22, 22, 22),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   //logo
                   Image.asset(
-                    'lib/images/vpost-for-darkmode.png',
+                    'lib/images/vpost-for-lightmode.png',
                     height: 200,
                     width: 200,
                   ),
@@ -144,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                          Expanded(
                           child: Divider(
                             thickness: 0.5,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         Padding(
@@ -153,13 +153,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           child: Text(
                             "OR",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                         Expanded(
                           child: Divider(
                             thickness: 0.5,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ],
@@ -190,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Not a member?", style: TextStyle(color: Colors.white)),
+                      const Text("Not a member?", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500)),
                       const SizedBox(width: 4),
                       GestureDetector(
                         onTap: widget.onTap,
