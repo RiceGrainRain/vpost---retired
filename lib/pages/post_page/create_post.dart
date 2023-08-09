@@ -58,6 +58,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
         'Description': description,
         'InfoLink': infoLink,
         'GcLink': gcLink,
+        'Image': imageUrl,
       });
     }
 
@@ -232,7 +233,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     });
                   } else {
                     if (infolinkController.text.isEmpty ||
-                        gclinkController.text.isEmpty) {
+                        gclinkController.text.isEmpty || imageUrl.isEmpty) {
                       showAlertMessage(
                           "Missing some fields! Hit upload to post anyways!");
                       isLoaded = true;
