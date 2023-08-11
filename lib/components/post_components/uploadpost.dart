@@ -18,7 +18,7 @@ class UploadPost extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
         margin: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-          color: Colors.blue.shade600,
+          color: const Color.fromARGB(255, 71, 209, 142),
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: const Center(

@@ -11,18 +11,14 @@ class MyPostButton extends StatelessWidget {
       padding: const EdgeInsets.all(35.0),
       child: Align(
         alignment: Alignment.bottomRight,
-        child: IconButton(
-          padding: EdgeInsets.zero,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
+        child: FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 71, 209, 142),
+          focusColor: Colors.transparent,
           hoverColor: Colors.transparent,
+          splashColor: Colors.transparent,
           onPressed: onPressed,
-          icon: Icon(
-            Icons.add_circle_rounded,
-            color: Colors.blue[600],
-            size: 60,
+          child: const Icon(Icons.add),
           ),
-        ),
       ),
     );
   }
