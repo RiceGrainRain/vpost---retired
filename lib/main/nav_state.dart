@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projects/pages/user_pages/home_page.dart';
+import 'package:projects/pages/home_pages/home_page.dart';
 import 'package:projects/pages/user_pages/location_page.dart';
 import 'package:projects/pages/post_page/post_page.dart';
 import 'package:projects/pages/user_pages/settings_page.dart';
@@ -20,7 +20,7 @@ class _NavStateState extends State<NavState> {
   int pageIndex = 0;
   
   final pages = [
-    HomePage(),
+    const HomePage(),
     const PostPage(),
     const LocationPage(),
     const SettingsPage(),

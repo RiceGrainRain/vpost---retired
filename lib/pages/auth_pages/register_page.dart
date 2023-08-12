@@ -15,6 +15,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final user = FirebaseAuth.instance.currentUser;
   //controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -34,6 +35,8 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
+
+
   //sign user up method
   void signUserUp() async {
     //loading screen
@@ -45,15 +48,17 @@ class _RegisterPageState extends State<RegisterPage> {
         );
       },
     );
-    
-    Future addUserDetails(String firstName, String lastName, int age, String email) async {
-        await FirebaseFirestore.instance.collection('users').add({
-          'first name' : firstName,
-          'last name' : lastName,
-          'age' : age,
-          'email' : email,
-        });
-      }
+
+    Future addUserDetails(
+        String firstName, String lastName, int age, String email) async {
+      await FirebaseFirestore.instance.collection('userposts').doc('userinfo').collection('users').add({
+        'first name': firstName,
+        'last name': lastName,
+        'age': age,
+        'email': email,
+        'display name': '$firstName $lastName',
+      });
+    }
 
     //try creating user
     try {
@@ -73,7 +78,6 @@ class _RegisterPageState extends State<RegisterPage> {
       } else {
         showErrorMessage("Passwords dont't match!");
       }
-
 
       //pop the loading screen
       Navigator.pop(context);
@@ -98,8 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
           title: Center(
             child: Text(
               message,
-              style: const TextStyle(
-                  color: Colors.white, fontSize: 16),
+              style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
         );
@@ -130,7 +133,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   const SizedBox(height: 10),
 
-                  const Text("Regster below with your details!", style: TextStyle(color: Color.fromARGB(255, 22, 22, 22))),
+                  const Text("Regster below with your details!",
+                      style: TextStyle(color: Color.fromARGB(255, 22, 22, 22))),
 
                   const SizedBox(height: 10),
 
@@ -187,7 +191,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Already have an account?", style: TextStyle(color: Color.fromARGB(255, 22, 22, 22))),
+                        const Text("Already have an account?",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 22, 22, 22))),
                         const SizedBox(width: 4),
                         GestureDetector(
                           onTap: widget.onTap,

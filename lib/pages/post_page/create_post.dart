@@ -53,12 +53,12 @@ class _CreatePostPageState extends State<CreatePostPage> {
       String infoLink,
       String gcLink,
     ) async {
-      await FirebaseFirestore.instance.collection('posts').add({
-        'Title': title,
-        'Description': description,
-        'InfoLink': infoLink,
-        'GcLink': gcLink,
-        'Image': imageUrl,
+      await FirebaseFirestore.instance.collection('userposts').doc('postinfo').collection('posts').add({
+        'title': title,
+        'description': description,
+        'infolink': infoLink,
+        'gclink': gcLink,
+        'image': imageUrl,
       });
     }
 
