@@ -12,7 +12,6 @@ import 'package:projects/components/post_components/my_postdescrip.dart';
 import 'package:projects/components/post_components/my_posttitle.dart';
 import 'package:projects/components/post_components/uploadpost.dart';
 
-
 class CreatePostPage extends StatefulWidget {
   const CreatePostPage({super.key});
 
@@ -53,7 +52,11 @@ class _CreatePostPageState extends State<CreatePostPage> {
       String infoLink,
       String gcLink,
     ) async {
-      await FirebaseFirestore.instance.collection('userposts').doc('postinfo').collection('posts').add({
+      await FirebaseFirestore.instance
+          .collection('userposts')
+          .doc('postinfo')
+          .collection('posts')
+          .add({
         'title': title,
         'description': description,
         'infolink': infoLink,
@@ -233,7 +236,8 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     });
                   } else {
                     if (infolinkController.text.isEmpty ||
-                        gclinkController.text.isEmpty || imageUrl.isEmpty) {
+                        gclinkController.text.isEmpty ||
+                        imageUrl.isEmpty) {
                       showAlertMessage(
                           "Missing some fields! Hit upload to post anyways!");
                       isLoaded = true;

@@ -35,8 +35,6 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
-
-
   //sign user up method
   void signUserUp() async {
     //loading screen
@@ -51,12 +49,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
     Future addUserDetails(
         String firstName, String lastName, int age, String email) async {
-      await FirebaseFirestore.instance.collection('userposts').doc('userinfo').collection('users').add({
+      await FirebaseFirestore.instance
+          .collection('userposts')
+          .doc('userinfo')
+          .collection('users')
+          .add({
         'first name': firstName,
         'last name': lastName,
         'age': age,
         'email': email,
-        'display name': '$firstName $lastName',
+        'displayName': '${firstNameController.text.trim()} ${lastNameController.text.trim()}'
       });
     }
 
