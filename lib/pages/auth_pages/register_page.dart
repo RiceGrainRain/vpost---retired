@@ -58,7 +58,6 @@ class _RegisterPageState extends State<RegisterPage> {
         'last name': lastName,
         'age': age,
         'email': email,
-        'displayName': '${firstNameController.text.trim()} ${lastNameController.text.trim()}'
       });
     }
 
