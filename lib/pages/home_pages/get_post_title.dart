@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class GetUserName extends StatelessWidget {
+class GetPostTitle extends StatelessWidget {
   final String documentId;
 
-  const GetUserName(this.documentId, {super.key});
+  const GetPostTitle(this.documentId, {super.key});
 
   @override
   Widget build(BuildContext context) {

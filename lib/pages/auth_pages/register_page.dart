@@ -81,6 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
       }
 
       //pop the loading screen
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //pop the loading screen

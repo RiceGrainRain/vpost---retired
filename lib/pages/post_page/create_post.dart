@@ -26,6 +26,12 @@ class _CreatePostPageState extends State<CreatePostPage> {
   final infolinkController = TextEditingController();
   final gclinkController = TextEditingController();
 
+    getUserUid() {
+    if (FirebaseAuth.instance.currentUser != null) {
+      return(FirebaseAuth.instance.currentUser?.uid);
+    }
+  }
+
   @override
   void dispose() {
     titleController.dispose();
@@ -62,6 +68,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
         'infolink': infoLink,
         'gclink': gcLink,
         'image': imageUrl,
+        'useruid': getUserUid(),
       });
     }
 
@@ -191,6 +198,15 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     XFile? file = await imagePicker.pickImage(
                         source: ImageSource.gallery);
 
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                      );
+
                     //Upload to Firebase Storage.
                     Reference referenceRoot = FirebaseStorage.instance.ref();
                     Reference referenceDirImages =
@@ -205,9 +221,12 @@ class _CreatePostPageState extends State<CreatePostPage> {
 
                     //Store file
                     try {
+
                       await referenceImageToUpload.putFile((File(file!.path)));
                       imageUrl = await referenceImageToUpload.getDownloadURL();
+                      Navigator.pop(context);
                     } catch (error) {
+                      Navigator.pop(context);
                       showErrorMessage("Problem uploading image");
                     }
                   }),
