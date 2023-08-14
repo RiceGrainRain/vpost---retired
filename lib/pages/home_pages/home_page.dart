@@ -4,15 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projects/components/home_components.dart/my_searchbar.dart';
 import 'package:projects/pages/home_pages/get_title.dart';
-import 'package:projects/pages/home_pages/get_user_name.dart';
-import 'package:projects/pages/home_pages/get_user_uid.dart';
-//import 'package:projects/pages/home_pages/get_image_url.dart';
-//import 'package:projects/pages/home_pages/get_post_description.dart';
-//import 'package:projects/pages/home_pages/get_post_gc_link.dart';
-//import 'package:projects/pages/home_pages/get_post_info_link.dart';
-//import 'package:projects/pages/home_pages/get_post_title.dart';
-//import 'package:projects/pages/home_pages/post_tile.dart';
-//import 'package:projects/models/post.dart';
+
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -65,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                 return ListTile(
                   title: GetTitle(documentID: docIDs[index],
                   ),
-                  subtitle: GetUserName(currentuserUid: GetUserUid(documentID: docIDs[index]).toString()),
+                  subtitle: const Text('Nothing yet'),
                   );
             });
           }))

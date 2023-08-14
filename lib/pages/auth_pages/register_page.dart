@@ -2,9 +2,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projects/components/auth_components/my_button.dart';
 import 'package:projects/components/auth_components/my_text_field.dart';
+
+import '../../components/auth_components/text_controllers.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -20,8 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  final firstNameController = TextEditingController();
-  final lastNameController = TextEditingController();
+  final TextControllers textControllers = Get.put(TextControllers());
   final ageController = TextEditingController();
 
   @override
@@ -29,8 +31,6 @@ class _RegisterPageState extends State<RegisterPage> {
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
-    firstNameController.dispose();
-    lastNameController.dispose();
     ageController.dispose();
     super.dispose();
   }
@@ -73,8 +73,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
         //adding user details;
         addUserDetails(
-          firstNameController.text.trim(),
-          lastNameController.text.trim(),
+          textControllers.firstNameController.value.text.trim(),
+          textControllers.lastNameController.value.text.trim(),
           int.parse(ageController.text.trim()),
           emailController.text.trim(),
         );
@@ -144,13 +144,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //fname
                   MyTextField(
-                      controller: firstNameController,
+                      controller: textControllers.firstNameController.value,
                       labelText: 'First Name',
                       obscureText: false),
 
                   //lname
                   MyTextField(
-                      controller: lastNameController,
+                      controller: textControllers.lastNameController.value,
                       labelText: 'Last Name',
                       obscureText: false),
 

@@ -1,11 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class GetUserName extends StatelessWidget {
-  final String currentuserUid;
-  const GetUserName({super.key, required this.currentuserUid});
-
-
+  const GetUserName({
+    super.key,
+  });
+  getUserUid() {
+    if (FirebaseAuth.instance.currentUser != null) {
+      return (FirebaseAuth.instance.currentUser?.uid);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,7 @@ class GetUserName extends StatelessWidget {
         .collection('users');
 
     return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(currentuserUid).get(),
+      future: users.doc(getUserUid()).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
@@ -29,7 +34,7 @@ class GetUserName extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
-          return Text("Posted by ${data['first name']} ${data['last name']}");
+          return Text("${data['first name']} ${data['last name']}");
         }
         return Text("loading", style: TextStyle(color: Colors.blue.shade600));
       },
