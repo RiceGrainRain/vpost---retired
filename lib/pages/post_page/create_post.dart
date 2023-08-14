@@ -12,6 +12,8 @@ import 'package:projects/components/post_components/my_postdescrip.dart';
 import 'package:projects/components/post_components/my_posttitle.dart';
 import 'package:projects/components/post_components/uploadpost.dart';
 
+
+
 class CreatePostPage extends StatefulWidget {
   const CreatePostPage({super.key});
 
@@ -68,7 +70,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
         'infolink': infoLink,
         'gclink': gcLink,
         'image': imageUrl,
-        'useruid': getUserUid(),
+        'uid': getUserUid(),
       });
     }
 
@@ -198,6 +200,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     XFile? file = await imagePicker.pickImage(
                         source: ImageSource.gallery);
 
+                      // ignore: use_build_context_synchronously
                       showDialog(
                         context: context,
                         builder: (context) {

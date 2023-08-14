@@ -1,9 +1,18 @@
 //Manas Navale - Vpost
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projects/components/home_components.dart/my_searchbar.dart';
+import 'package:projects/pages/home_pages/get_title.dart';
+import 'package:projects/pages/home_pages/get_user_name.dart';
+import 'package:projects/pages/home_pages/get_user_uid.dart';
+//import 'package:projects/pages/home_pages/get_image_url.dart';
+//import 'package:projects/pages/home_pages/get_post_description.dart';
+//import 'package:projects/pages/home_pages/get_post_gc_link.dart';
+//import 'package:projects/pages/home_pages/get_post_info_link.dart';
+//import 'package:projects/pages/home_pages/get_post_title.dart';
 //import 'package:projects/pages/home_pages/post_tile.dart';
-
+//import 'package:projects/models/post.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +30,21 @@ class _HomePageState extends State<HomePage> {
     //filters list
   }
 
+  List<String> docIDs = [];
+
+  Future getDocID() async {
+    await FirebaseFirestore.instance
+        .collection('userposts')
+        .doc('postinfo')
+        .collection('posts')
+        .get()
+        .then(
+          (snapshot) => snapshot.docs.forEach((document) {
+            print(document.reference);
+            docIDs.add(document.reference.id);
+          }),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +56,19 @@ class _HomePageState extends State<HomePage> {
           const MySearchBar(),
           const SizedBox(height: 20),
           Expanded(
-            child: ListView.builder(
-              itemBuilder:(context, index) {
-  
-              }),
-          ),
+            child: FutureBuilder(
+              future: getDocID(),
+              builder: (context, snapshot) {
+              return ListView.builder(
+                itemCount: docIDs.length,
+                itemBuilder: (context, index) {
+                return ListTile(
+                  title: GetTitle(documentID: docIDs[index],
+                  ),
+                  subtitle: GetUserName(currentuserUid: GetUserUid(documentID: docIDs[index]).toString()),
+                  );
+            });
+          }))
         ],
       ),
     );

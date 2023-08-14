@@ -53,11 +53,13 @@ class _RegisterPageState extends State<RegisterPage> {
           .collection('userposts')
           .doc('userinfo')
           .collection('users')
-          .add({
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .set({
         'first name': firstName,
         'last name': lastName,
         'age': age,
         'email': email,
+        'uid': FirebaseAuth.instance.currentUser?.uid,
       });
     }
 
