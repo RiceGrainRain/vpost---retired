@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:projects/components/post_components/addlocation.dart';
 import 'package:projects/components/post_components/attachimages.dart';
@@ -12,9 +11,6 @@ import 'package:projects/components/post_components/my_linkfield.dart';
 import 'package:projects/components/post_components/my_postdescrip.dart';
 import 'package:projects/components/post_components/my_posttitle.dart';
 import 'package:projects/components/post_components/uploadpost.dart';
-//import 'package:projects/pages/home_pages/get_user_name.dart';
-
-import '../../components/auth_components/text_controllers.dart';
 
 class CreatePostPage extends StatefulWidget {
   const CreatePostPage({super.key});
@@ -25,7 +21,6 @@ class CreatePostPage extends StatefulWidget {
 
 class _CreatePostPageState extends State<CreatePostPage> {
   bool isLoaded = false;
-  final TextControllers textControllers = Get.put(TextControllers());
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
   final infolinkController = TextEditingController();
@@ -62,7 +57,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
       String description,
       String infoLink,
       String gcLink,
-      String displayName,
     ) async {
       await FirebaseFirestore.instance
           .collection('userposts')
@@ -75,7 +69,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
         'gclink': gcLink,
         'image': imageUrl,
         'uid': getUserUid(),
-        'displayName': displayName,
       });
     }
 
@@ -85,7 +78,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
         descriptionController.text.trim(),
         infolinkController.text.trim(),
         gclinkController.text.trim(),
-        textControllers.firstNameController.value.text.trim(),
       );
 
       //pop the loading screen

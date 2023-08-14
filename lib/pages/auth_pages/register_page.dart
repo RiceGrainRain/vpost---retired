@@ -2,12 +2,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projects/components/auth_components/my_button.dart';
 import 'package:projects/components/auth_components/my_text_field.dart';
 
-import '../../components/auth_components/text_controllers.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -23,7 +21,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  final TextControllers textControllers = Get.put(TextControllers());
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final ageController = TextEditingController();
 
   @override
@@ -73,8 +72,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
         //adding user details;
         addUserDetails(
-          textControllers.firstNameController.value.text.trim(),
-          textControllers.lastNameController.value.text.trim(),
+          firstNameController.text.trim(),
+          lastNameController.text.trim(),
           int.parse(ageController.text.trim()),
           emailController.text.trim(),
         );
@@ -144,13 +143,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //fname
                   MyTextField(
-                      controller: textControllers.firstNameController.value,
+                      controller: firstNameController,
                       labelText: 'First Name',
                       obscureText: false),
 
                   //lname
                   MyTextField(
-                      controller: textControllers.lastNameController.value,
+                      controller: lastNameController,
                       labelText: 'Last Name',
                       obscureText: false),
 
