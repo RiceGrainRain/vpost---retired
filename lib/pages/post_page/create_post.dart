@@ -26,12 +26,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
   final infolinkController = TextEditingController();
   final gclinkController = TextEditingController();
 
-  getUserUid() {
-    if (FirebaseAuth.instance.currentUser != null) {
-      return (FirebaseAuth.instance.currentUser?.uid);
-    }
-  }
-
   @override
   void dispose() {
     titleController.dispose();
@@ -52,6 +46,8 @@ class _CreatePostPageState extends State<CreatePostPage> {
       },
     );
 
+
+
     Future addPostDetails(
       String title,
       String description,
@@ -59,16 +55,14 @@ class _CreatePostPageState extends State<CreatePostPage> {
       String gcLink,
     ) async {
       await FirebaseFirestore.instance
-          .collection('userposts')
-          .doc('postinfo')
-          .collection('posts')
-          .add({
+          .collection('users')
+          .doc('${FirebaseAuth.instance.currentUser?.uid}')
+          .update({
         'title': title,
         'description': description,
         'infolink': infoLink,
         'gclink': gcLink,
         'image': imageUrl,
-        'uid': getUserUid(),
       });
     }
 
@@ -80,7 +74,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
         gclinkController.text.trim(),
       );
 
-      //pop the loading screen
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //pop the loading screen

@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:projects/components/auth_components/my_button.dart';
 import 'package:projects/components/auth_components/my_text_field.dart';
 
-
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
   const RegisterPage({super.key, required this.onTap});
@@ -16,6 +15,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  late bool firstPost;
   final user = FirebaseAuth.instance.currentUser;
   //controllers
   final emailController = TextEditingController();
@@ -46,18 +46,20 @@ class _RegisterPageState extends State<RegisterPage> {
       },
     );
 
+
+
     Future addUserDetails(
         String firstName, String lastName, int age, String email) async {
       await FirebaseFirestore.instance
-          .collection('userposts')
-          .doc('userinfo')
           .collection('users')
-          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .doc('${FirebaseAuth.instance.currentUser?.uid}')
           .set({
         'first name': firstName,
         'last name': lastName,
         'age': age,
         'email': email,
+        'displayName':
+            '${firstNameController.text.trim()} ${lastNameController.text.trim()}',
         'uid': FirebaseAuth.instance.currentUser?.uid,
       });
     }

@@ -6,21 +6,15 @@ class GetUserName extends StatelessWidget {
   const GetUserName({
     super.key,
   });
-  getUserUid() {
-    if (FirebaseAuth.instance.currentUser != null) {
-      return (FirebaseAuth.instance.currentUser?.uid);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     CollectionReference users = FirebaseFirestore.instance
-        .collection('userposts')
-        .doc('userinfo')
-        .collection('users');
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection('userinfo');
 
     return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(getUserUid()).get(),
+      future: users.doc(FirebaseAuth.instance.currentUser?.uid).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
