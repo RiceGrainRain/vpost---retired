@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projects/components/auth_components/my_button.dart';
 import 'package:projects/components/auth_components/my_text_field.dart';
+import 'package:projects/models/user.dart' as model;
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -46,22 +47,28 @@ class _RegisterPageState extends State<RegisterPage> {
       },
     );
 
-
-
     Future addUserDetails(
-        String firstName, String lastName, int age, String email) async {
+      String firstName,
+      String lastName,
+      int age,
+      String email,
+      String displayName,
+      String uid) async {
+
+
+      model.User user = model.User(
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          age: age,
+          displayName: displayName,
+          uid: uid
+          );
+
       await FirebaseFirestore.instance
           .collection('users')
-          .doc('${FirebaseAuth.instance.currentUser?.uid}')
-          .set({
-        'first name': firstName,
-        'last name': lastName,
-        'age': age,
-        'email': email,
-        'displayName':
-            '${firstNameController.text.trim()} ${lastNameController.text.trim()}',
-        'uid': FirebaseAuth.instance.currentUser?.uid,
-      });
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .set(user.toJson());
     }
 
     //try creating user
@@ -74,11 +81,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
         //adding user details;
         addUserDetails(
-          firstNameController.text.trim(),
-          lastNameController.text.trim(),
-          int.parse(ageController.text.trim()),
-          emailController.text.trim(),
-        );
+            firstNameController.text.trim(),
+            lastNameController.text.trim(),
+            int.parse(ageController.text.trim()),
+            emailController.text.trim(),
+            '${firstNameController.text.trim()} ${lastNameController.text.trim()}',
+            FirebaseAuth.instance.currentUser!.uid
+            );
+
       } else {
         showErrorMessage("Passwords dont't match!");
       }

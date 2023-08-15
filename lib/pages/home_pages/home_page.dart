@@ -3,9 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projects/components/home_components.dart/my_searchbar.dart';
-import 'package:projects/pages/home_pages/get_title.dart';
-
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,6 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String displayName = "";
   void signUserOut() {
     FirebaseAuth.instance.signOut();
   }
@@ -23,45 +21,36 @@ class _HomePageState extends State<HomePage> {
     //filters list
   }
 
-  List<String> docIDs = [];
+  @override
+  void initState() {
+    super.initState();
+    getDisplayName();
+  }
 
-  Future getDocID() async {
-    await FirebaseFirestore.instance
-        .collection('userposts')
-        .doc('postinfo')
-        .collection('posts')
-        .get()
-        .then(
-          (snapshot) => snapshot.docs.forEach((document) {
-            print(document.reference);
-            docIDs.add(document.reference.id);
-          }),
-        );
+  void getDisplayName() async {
+    DocumentSnapshot snap = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    setState(() {
+      displayName = (snap.data() as Map<String, dynamic>)['displayName'];
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      appBar: AppBar(
+        title: Text(displayName),
+        backgroundColor: Colors.black,
+      ),
+      body: const Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const MySearchBar(),
-          const SizedBox(height: 20),
-          Expanded(
-            child: FutureBuilder(
-              future: getDocID(),
-              builder: (context, snapshot) {
-              return ListView.builder(
-                itemCount: docIDs.length,
-                itemBuilder: (context, index) {
-                return ListTile(
-                  title: GetTitle(documentID: docIDs[index],
-                  ),
-                  subtitle: const Text('Nothing yet'),
-                  );
-            });
-          }))
+          MySearchBar(),
+          SizedBox(height: 20),
         ],
       ),
     );
