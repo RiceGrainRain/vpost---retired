@@ -296,14 +296,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "10.5.0"
-  get:
-    dependency: "direct main"
-    description:
-      name: get
-      sha256: "2ba20a47c8f1f233bed775ba2dd0d3ac97b4cf32fc17731b3dfc672b06b0e92a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.6.5"
   google_fonts:
     dependency: "direct main"
     description:
@@ -360,14 +352,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.12.0+2"
-  graphs:
-    dependency: transitive
-    description:
-      name: graphs
-      sha256: aedc5a15e78fc65a6e23bcd927f24c64dd995062bcd1ca6eda65a3cff92a4d19
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.3.1"
   http:
     dependency: transitive
     description:
@@ -496,6 +480,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -560,14 +552,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
-  persistent_bottom_nav_bar:
-    dependency: "direct main"
-    description:
-      name: persistent_bottom_nav_bar
-      sha256: e2e031e3366fde01511e372a9a19d720a9b252bb456e5c8d77a30d7a4a2ddfb0
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.2"
   petitparser:
     dependency: transitive
     description:
@@ -592,6 +576,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.5"
+  provider:
+    dependency: "direct main"
+    description:
+      name: provider
+      sha256: cdbe7530b12ecd9eb455bdaa2fcb8d4dad22e80b8afb4798b41479d5ce26847f
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.5"
   quiver:
     dependency: transitive
     description:
@@ -600,22 +592,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
-  rive:
-    dependency: "direct main"
-    description:
-      name: rive
-      sha256: d02de7cb32c30f77377684a327639bc134df96e5fb048e7837b7497250717161
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.11.12"
-  rive_common:
-    dependency: transitive
-    description:
-      name: rive_common
-      sha256: "77ef4988cd572cf1efde80bef36f0595840657df3b385bb47bb0d82d0c16ec40"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.4"
   sign_in_button:
     dependency: "direct main"
     description:

@@ -1,6 +1,5 @@
 //Manas Navale - Vpost
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:projects/pages/auth_pages/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:projects/theme/darktheme.dart';
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
