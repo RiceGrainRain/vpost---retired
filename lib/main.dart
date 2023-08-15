@@ -5,7 +5,7 @@ import 'package:projects/pages/auth_pages/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:projects/theme/darktheme.dart';
 import 'package:projects/theme/lighttheme.dart';
-import 'firebase_options.dart';
+import 'main/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
