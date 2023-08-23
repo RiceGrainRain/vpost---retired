@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projects/pages/home_pages/home_page.dart';
 import 'package:projects/pages/user_pages/location_page.dart';
-import 'package:projects/pages/post_page/post_page.dart';
+import 'package:projects/pages/post_pages/post_page.dart';
 import 'package:projects/pages/user_pages/settings_page.dart';
 
 import '../components/nav_components/my_appbar.dart';

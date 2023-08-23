@@ -16,7 +16,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  late bool firstPost;
   final user = FirebaseAuth.instance.currentUser;
   //controllers
   final emailController = TextEditingController();

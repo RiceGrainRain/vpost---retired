@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projects/pages/post_page/saved_posts.dart';
+import 'package:projects/pages/post_pages/saved_posts.dart';
 import 'my_posts.dart';
 
 class PostPage extends StatefulWidget {

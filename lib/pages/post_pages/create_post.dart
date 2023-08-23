@@ -11,6 +11,7 @@ import 'package:projects/components/post_components/my_linkfield.dart';
 import 'package:projects/components/post_components/my_postdescrip.dart';
 import 'package:projects/components/post_components/my_posttitle.dart';
 import 'package:projects/components/post_components/uploadpost.dart';
+import 'package:projects/models/post.dart' as model;
 
 class CreatePostPage extends StatefulWidget {
   const CreatePostPage({super.key});
@@ -20,6 +21,7 @@ class CreatePostPage extends StatefulWidget {
 }
 
 class _CreatePostPageState extends State<CreatePostPage> {
+  String displayName = "";
   bool isLoaded = false;
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
@@ -46,30 +48,49 @@ class _CreatePostPageState extends State<CreatePostPage> {
       },
     );
 
+    void getDisplayName() async {
+      DocumentSnapshot snap = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .get();
 
+      setState(() {
+        displayName = (snap.data() as Map<String, dynamic>)['displayName'];
+      });
+    }
+
+  @override
+  void initState() {
+    super.initState();
+    getDisplayName();
+  }
 
     Future addPostDetails(
       String title,
       String description,
       String infoLink,
       String gcLink,
+      String storedUrl,
     ) async {
+      model.Post post = model.Post(
+          username: displayName,
+          title: title,
+          storedUrl: storedUrl,
+          description: description,
+          infoLink: infoLink,
+          gcLink: gcLink);
       await FirebaseFirestore.instance
-          .collection('users')
+          .collection('posts')
           .doc('${FirebaseAuth.instance.currentUser?.uid}')
-          .update({
-        'title': title,
-        'description': description,
-        'infolink': infoLink,
-        'gclink': gcLink,
-        'image': imageUrl,
-      });
+          .set(post.toJson());
     }
+
 
     try {
       addPostDetails(
         titleController.text.trim(),
         descriptionController.text.trim(),
+        imageUrl,
         infolinkController.text.trim(),
         gclinkController.text.trim(),
       );
