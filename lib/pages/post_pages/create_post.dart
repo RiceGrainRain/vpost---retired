@@ -37,16 +37,11 @@ class _CreatePostPageState extends State<CreatePostPage> {
     super.dispose();
   }
 
-  void uploadPost() async {
-    //loading screen
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
+  @override
+  void initState() {
+      super.initState();
+      getDisplayName();
+    }
 
     void getDisplayName() async {
       DocumentSnapshot snap = await FirebaseFirestore.instance
@@ -59,18 +54,24 @@ class _CreatePostPageState extends State<CreatePostPage> {
       });
     }
 
-    void initState() {
-      super.initState();
-      getDisplayName();
-    }
+  void uploadPost() async {
+    //loading screen
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
 
     Future addPostDetails(
       String username,
       String title,
+      String storedUrl,
       String description,
       String infoLink,
       String gcLink,
-      String storedUrl,
     ) async {
       model.Post post = model.Post(
           username: username,
