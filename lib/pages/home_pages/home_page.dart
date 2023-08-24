@@ -2,9 +2,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:projects/components/home_components/get_display_name.dart';
-import 'package:projects/components/home_components/get_title.dart';
+//import 'package:projects/components/home_components/get_display_name.dart';
 import 'package:projects/components/home_components/my_searchbar.dart';
+import 'package:projects/components/home_components/post_tile.dart';
 //import 'package:projects/components/home_components/post_tile.dart';
 //import 'package:projects/models/post.dart';
 
@@ -47,19 +47,26 @@ class _HomePageState extends State<HomePage> {
           const MySearchBar(),
           const SizedBox(height: 20),
           Expanded(
-              child: FutureBuilder(
-                  future: getDocID(),
-                  builder: (context, snapshot) {
-                    return ListView.builder(
-                      itemCount: docIDs.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                            title: GetTitle(documentId: docIDs[index]),
-                            subtitle: GetDisplayName(documentId: docIDs[index]),
-                            );
-                      },
+            child: StreamBuilder(
+                stream:
+                    FirebaseFirestore.instance.collection('posts').snapshots(),
+                builder: (context,
+                    AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
+                        snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
-                  }))
+                  }
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (context, index) => PostTile(
+                        snap: snapshot.data!.docs[index].data
+                      )
+                          );
+                }),
+          ),
         ],
       ),
     );
