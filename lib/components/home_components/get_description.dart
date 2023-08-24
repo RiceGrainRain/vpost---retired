@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class GetDescription extends StatelessWidget {
   final String documentId;
 
-  GetDescription({required this.documentId});
+  const GetDescription({super.key, required this.documentId});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class GetDescription extends StatelessWidget {
                 snapshot.data!.data() as Map<String, dynamic>;
             return Text('${data['description']}');
           }
-          return Text('loading...');
+          return const Text('loading...');
         }));
   }
 }

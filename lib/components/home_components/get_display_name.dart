@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class GetDisplayName extends StatelessWidget {
   final String documentId;
 
-  GetDisplayName({required this.documentId});
+  const GetDisplayName({super.key, required this.documentId});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class GetDisplayName extends StatelessWidget {
                 snapshot.data!.data() as Map<String, dynamic>;
             return Text('${data['displayName']}');
           }
-          return Text('loading...');
+          return const Text('loading...');
         }));
   }
 }

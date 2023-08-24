@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class GetTitle extends StatelessWidget {
   final String documentId;
 
-  GetTitle({required this.documentId});
+  const GetTitle({super.key, required this.documentId});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class GetTitle extends StatelessWidget {
                 snapshot.data!.data() as Map<String, dynamic>;
             return Text('${data['title']}');
           }
-          return Text('loading...');
+          return const Text('loading...');
         }));
   }
 }

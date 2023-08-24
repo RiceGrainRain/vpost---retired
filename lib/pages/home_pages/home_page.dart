@@ -2,9 +2,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:projects/components/home_components/get_display_name.dart';
+import 'package:projects/components/home_components/get_title.dart';
 import 'package:projects/components/home_components/my_searchbar.dart';
-import 'package:projects/components/home_components/post_tile.dart';
-import 'package:projects/models/post.dart';
+//import 'package:projects/components/home_components/post_tile.dart';
+//import 'package:projects/models/post.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,7 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String displayName = "";
   void signUserOut() {
     FirebaseAuth.instance.signOut();
   }
@@ -52,15 +53,10 @@ class _HomePageState extends State<HomePage> {
                     return ListView.builder(
                       itemCount: docIDs.length,
                       itemBuilder: (context, index) {
-                        Post post = Post(
-                          username: '',
-                          description: '',
-                          gcLink: '', 
-                          infoLink: '', 
-                          storedUrl: '', 
-                          title: '',
-                        );
-                        return PostTile(post: post,);
+                        return ListTile(
+                            title: GetTitle(documentId: docIDs[index]),
+                            subtitle: GetDisplayName(documentId: docIDs[index]),
+                            );
                       },
                     );
                   }))

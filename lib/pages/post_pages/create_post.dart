@@ -59,13 +59,13 @@ class _CreatePostPageState extends State<CreatePostPage> {
       });
     }
 
-  @override
-  void initState() {
-    super.initState();
-    getDisplayName();
-  }
+    void initState() {
+      super.initState();
+      getDisplayName();
+    }
 
     Future addPostDetails(
+      String username,
       String title,
       String description,
       String infoLink,
@@ -73,7 +73,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
       String storedUrl,
     ) async {
       model.Post post = model.Post(
-          username: displayName,
+          username: username,
           title: title,
           storedUrl: storedUrl,
           description: description,
@@ -85,12 +85,13 @@ class _CreatePostPageState extends State<CreatePostPage> {
           .set(post.toJson());
     }
 
-
     try {
+      initState();
       addPostDetails(
+        displayName,
         titleController.text.trim(),
-        descriptionController.text.trim(),
         imageUrl,
+        descriptionController.text.trim(),
         infolinkController.text.trim(),
         gclinkController.text.trim(),
       );
